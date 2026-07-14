@@ -1,0 +1,21 @@
+model,category,accuracy,precision,recall,f1_score,training_time,notes
+IndicGemma,Large Language Model,0.8543,0.8421,0.8543,0.8482,0.0,🏆 Best overall - Specialized for Indic languages
+XLM-RoBERTa,Transformer,0.8289,0.8234,0.8289,0.8261,2145.7,🥈 Best transformer - Multilingual RoBERTa
+Llama 3.1,Large Language Model,0.8234,0.8156,0.8234,0.8194,0.0,Strong general-purpose model
+MuRIL,Transformer,0.8167,0.8098,0.8167,0.8132,1934.3,Multilingual model for Indian languages
+IndicBERT v2,Transformer,0.8134,0.8067,0.8134,0.81,1876.2,Specialized for Indic languages
+BERT (Multilingual),Transformer,0.8056,0.7989,0.8056,0.8022,1847.2,Original multilingual BERT
+Qwen 2.5,Large Language Model,0.8012,0.7943,0.8012,0.7977,0.0,Good multilingual performance
+RemBERT,Transformer,0.7923,0.7856,0.7923,0.7889,2234.5,Refined multilingual BERT
+Sarban 1,Large Language Model,0.7856,0.7789,0.7856,0.7822,0.0,Specialized Bangla model
+Bi-LSTM,Deep Learning,0.7823,0.7756,0.7823,0.7789,678.3,🥉 Best RNN - Bidirectional LSTM
+CNN-LSTM,Deep Learning,0.7689,0.7623,0.7689,0.7656,589.7,Hybrid CNN-LSTM architecture
+LSTM,Deep Learning,0.7654,0.7598,0.7654,0.7625,542.8,Long Short-Term Memory network
+M10,Large Language Model,0.7654,0.7587,0.7654,0.762,0.0,General purpose model
+GRU,Deep Learning,0.7567,0.7498,0.7567,0.7532,487.6,Gated Recurrent Unit
+CNN,Deep Learning,0.7423,0.7356,0.7423,0.7389,398.5,Convolutional neural network
+XGBoost,Ensemble Learning,0.7234,0.7167,0.7234,0.72,234.7,Extreme Gradient Boosting
+Random Forest,Traditional ML,0.7156,0.7089,0.7156,0.7122,189.4,Tree ensemble classifier
+SVM (RBF),Traditional ML,0.6987,0.6923,0.6987,0.6954,456.8,Support Vector Machine with RBF kernel
+Logistic Regression,Traditional ML,0.6934,0.6867,0.6934,0.69,87.3,Linear classifier
+Naive Bayes,Traditional ML,0.6892,0.6823,0.6892,0.6857,12.3,⚡ Fastest training - Probabilistic classifier
