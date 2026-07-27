@@ -1,0 +1,21 @@
+rank,model,category,accuracy,precision,recall,f1_score,training_time,notes
+1,IndicGemma,Large Language Model,0.8312,0.8198,0.8312,0.8254,0.0,Best overall - strong Indic language support including Tamil
+2,XLM-RoBERTa,Transformer,0.8156,0.8089,0.8156,0.8122,2234.5,Strong multilingual representation for Tamil
+3,Llama 3.1,Large Language Model,0.8034,0.7945,0.8034,0.7989,0.0,Good multilingual capability
+4,MuRIL,Transformer,0.8098,0.8012,0.8098,0.8054,1987.3,Specifically trained on Indian languages including Tamil
+5,IndicBERT v2,Transformer,0.7989,0.7912,0.7989,0.795,1923.6,AI4Bharat model with Tamil support
+6,BERT (Multilingual),Transformer,0.7867,0.7789,0.7867,0.7827,1912.4,Baseline multilingual transformer
+7,Qwen 2.5,Large Language Model,0.7823,0.7745,0.7823,0.7783,0.0,Multilingual LLM
+8,RemBERT,Transformer,0.7756,0.7678,0.7756,0.7716,2345.7,Large multilingual transformer
+9,Sarban 1,Large Language Model,0.7612,0.7534,0.7612,0.7572,0.0,Focused on South Asian languages
+10,Bi-LSTM,Deep Learning,0.7589,0.7512,0.7589,0.755,712.4,Bidirectional captures Tamil word order
+11,CNN-LSTM,Deep Learning,0.7467,0.7389,0.7467,0.7427,623.8,Hybrid architecture
+12,LSTM,Deep Learning,0.7423,0.7345,0.7423,0.7383,578.9,Sequential processing of Tamil text
+13,M10,Large Language Model,0.7398,0.7312,0.7398,0.7354,0.0,Multilingual generative model
+14,GRU,Deep Learning,0.7312,0.7234,0.7312,0.7272,512.3,Efficient recurrent model
+15,CNN,Deep Learning,0.7189,0.7112,0.7189,0.715,423.7,Local feature extraction
+16,XGBoost,Ensemble Learning,0.7045,0.6978,0.7045,0.7011,267.4,Gradient boosting with TF-IDF features
+17,Random Forest,Traditional ML,0.6923,0.6856,0.6923,0.6889,198.6,Ensemble of decision trees
+18,SVM (RBF),Traditional ML,0.6789,0.6712,0.6789,0.675,489.2,RBF kernel with char n-gram features
+19,Logistic Regression,Traditional ML,0.6734,0.6656,0.6734,0.6694,92.4,Linear classifier
+20,Naive Bayes,Traditional ML,0.6612,0.6534,0.6612,0.6572,14.2,"Fastest model, probabilistic classifier"

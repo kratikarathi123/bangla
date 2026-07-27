@@ -20,3 +20,5 @@ matplotlib>=3.7.0
 seaborn>=0.12.0
 xgboost>=1.7.0
 lightgbm>=4.0.0
+# Additional for Tamil evaluation
+indic-nlp-library>=0.81

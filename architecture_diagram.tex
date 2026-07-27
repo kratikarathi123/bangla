@@ -1,0 +1,100 @@
+\documentclass[border=10pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, calc}
+
+\begin{document}
+\begin{tikzpicture}[
+    node distance=1.0cm and 1.5cm,
+    box/.style={rectangle, draw, rounded corners=4pt, minimum width=3.2cm, minimum height=0.9cm, align=center, font=\small\bfseries, line width=0.7pt},
+    input/.style={box, fill=green!20},
+    process/.style={box, fill=cyan!12},
+    feature/.style={box, fill=yellow!15},
+    model/.style={box, fill=orange!18, minimum width=2.4cm},
+    eval/.style={box, fill=red!12, minimum width=4.5cm},
+    output/.style={box, fill=purple!12, minimum width=4.5cm},
+    group/.style={rectangle, draw, dashed, rounded corners=6pt, inner sep=10pt, fill=gray!5},
+    arr/.style={-{Stealth[length=3mm]}, thick},
+    darr/.style={-{Stealth[length=3mm]}, thick, dashed},
+]
+
+% ============ ROW 1: DUAL INPUT ============
+\node[input] (tamil) {Tamil Corpus};
+\node[input, right=3.5cm of tamil] (bangla) {Bangla Corpus};
+
+% ============ ROW 2: DATA PREPARATION ============
+\node[process, below=1.2cm of tamil, xshift=2.0cm] (dataprep) {Data Preparation\\{\normalfont\scriptsize Encoding $\cdot$ Normalization $\cdot$ Stratified Split}};
+
+% ============ ROW 3: DUAL FEATURE PATH ============
+\node[feature, below left=1.5cm and 0.5cm of dataprep] (tfidf) {Statistical Features\\{\normalfont\scriptsize TF-IDF $\cdot$ Char N-grams}};
+\node[feature, below right=1.5cm and 0.5cm of dataprep] (neural) {Neural Representations\\{\normalfont\scriptsize Subword Tokenization}};
+
+% ============ ROW 4: MODEL CATEGORIES ============
+% ML Models
+\node[model, below=1.8cm of tfidf, xshift=-1.5cm] (ml1) {Naive Bayes};
+\node[model, right=0.4cm of ml1] (ml2) {SVM};
+\node[model, right=0.4cm of ml2] (ml3) {Logistic Reg.};
+\node[model, below=0.4cm of ml1] (ml4) {Random Forest};
+\node[model, right=0.4cm of ml4] (ml5) {XGBoost};
+
+% DL Models
+\node[model, below=1.8cm of neural, xshift=-1.2cm] (dl1) {CNN};
+\node[model, right=0.4cm of dl1] (dl2) {LSTM};
+\node[model, right=0.4cm of dl2] (dl3) {Bi-LSTM};
+\node[model, below=0.4cm of dl1] (dl4) {GRU};
+\node[model, right=0.4cm of dl4] (dl5) {CNN-LSTM};
+
+% Transformer Models
+\node[model, below=1.2cm of ml4, xshift=0.5cm] (t1) {mBERT};
+\node[model, right=0.4cm of t1] (t2) {XLM-RoBERTa};
+\node[model, right=0.4cm of t2] (t3) {MuRIL};
+\node[model, below=0.4cm of t1] (t4) {IndicBERT v2};
+\node[model, right=0.4cm of t4] (t5) {RemBERT};
+
+% LLM Models
+\node[model, below=1.2cm of dl4, xshift=0.5cm] (l1) {IndicGemma};
+\node[model, right=0.4cm of l1] (l2) {Llama 3.1};
+\node[model, right=0.4cm of l2] (l3) {Qwen 2.5};
+\node[model, below=0.4cm of l1] (l4) {Sarban 1};
+\node[model, right=0.4cm of l4] (l5) {M10};
+
+% ============ GROUP BOXES ============
+\begin{scope}[on background layer]
+\node[group, fit=(ml1)(ml2)(ml3)(ml4)(ml5), label={[font=\scriptsize\bfseries, text=blue!70]above:Traditional ML \& Ensemble}] (gml) {};
+\node[group, fit=(dl1)(dl2)(dl3)(dl4)(dl5), label={[font=\scriptsize\bfseries, text=blue!70]above:Deep Learning}] (gdl) {};
+\node[group, fit=(t1)(t2)(t3)(t4)(t5), label={[font=\scriptsize\bfseries, text=blue!70]above:Transformer Fine-tuning}] (gt) {};
+\node[group, fit=(l1)(l2)(l3)(l4)(l5), label={[font=\scriptsize\bfseries, text=blue!70]above:LLM Zero-shot Inference}] (gl) {};
+\end{scope}
+
+% ============ ROW 5: EVALUATION ============
+\node[eval, below=1.0cm of $(t5.south)!0.5!(l4.south)$] (metrics) {Multi-Metric Evaluation\\{\normalfont\scriptsize Accuracy $\cdot$ Precision $\cdot$ Recall $\cdot$ F1-Score}};
+
+% ============ ROW 6: OUTPUT ============
+\node[output, below=1.0cm of metrics] (compare) {Cross-Lingual Comparative Analysis\\{\normalfont\scriptsize Performance Ranking $\cdot$ Statistical Significance}};
+
+% ============ ARROWS ============
+% Input to data prep
+\draw[arr] (tamil) -- (dataprep);
+\draw[arr] (bangla) -- (dataprep);
+
+% Data prep to features
+\draw[arr] (dataprep) -- (tfidf);
+\draw[arr] (dataprep) -- (neural);
+
+% Features to model groups
+\draw[arr] (tfidf) -- (gml);
+\draw[arr] (neural) -- (gdl);
+\draw[arr] (neural) -- (gt);
+\draw[darr] (dataprep.south) -- ++(0,-0.5) -| (gl.north) node[pos=0.25, right, font=\tiny\itshape] {prompt-based};
+
+% Model groups to evaluation
+\draw[arr] (gml.south) -- ++(0,-0.3) -| (metrics.north west);
+\draw[arr] (gdl.south) -- ++(0,-0.3) -| (metrics.north east);
+\draw[arr] (gt.south) -- (metrics);
+\draw[arr] (gl.south) -- (metrics);
+
+% Evaluation to output
+\draw[arr] (metrics) -- (compare);
+
+\end{tikzpicture}
+\end{document}
